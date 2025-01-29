@@ -1,5 +1,5 @@
 import SectionTitle from '../../../components/SectionTitle/SectionTitle'
-import featured from '../../../assets/home/featured.jpg'
+import featured from '/assets/home/featured.jpg'
 import './FeaturedItem.css'
 
 const FeaturedItem = () => {
@@ -11,7 +11,7 @@ const FeaturedItem = () => {
         />
         <div className='md:flex items-center justify-center px-36 pt-12 gap-6'>
         <div>
-        <img className='' src={featured} alt="" />
+        <img  src={featured} alt="" />
         </div>
             
         <div>
