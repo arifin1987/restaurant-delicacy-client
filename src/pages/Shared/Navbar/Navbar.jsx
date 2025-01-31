@@ -5,6 +5,7 @@ const Navbar = () => {
     const navItems = <>
     <Link className="mx-4" to= '/'>Home</Link>
     <Link className="mx-4" to='/menu'>Menu</Link>
+    <Link className="mx-4" to='/order'>Order</Link>
     </>
   return (
     <div className="navbar fixed z-10 bg-black bg-opacity-30 text-white max-w-screen-xl mx-auto">

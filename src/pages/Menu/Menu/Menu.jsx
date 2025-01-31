@@ -15,7 +15,7 @@ const Menu = () => {
   const drinks = menu.filter(item => item.category == 'drinks')
   
   return (
-    <div className="h-screen">
+    <div className="my-8">
         <Helmet>
         <title>Restaurant Delicacy || Menu</title>
         </Helmet>
