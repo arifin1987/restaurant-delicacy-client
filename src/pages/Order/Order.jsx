@@ -5,13 +5,20 @@ import orderPic from '/assets/menu/banner3.jpg'
 import useMenu from "../../hooks/useMenu";
 import OrderTab from "./OrderTab";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Order = () => {
-    const[tabIndex, setTabIndex]= useState(0);
+  const categories = ['pizza', 'salad', 'dessert', 'soup'];
+    
+    const {category} = useParams() ;
+    const initialIndex = categories.indexOf(category);
+    console.log(initialIndex)
+    const[tabIndex, setTabIndex]= useState(initialIndex);
     const [menu] = useMenu();
     const pizza = menu.filter(item=> item.category === 'pizza');
     const salad = menu.filter(item=> item.category === 'salad');
-    const desserts = menu.filter(item=> item.category === 'dessert');
+    const dessert = menu.filter(item=> item.category === 'dessert');
+    const soup = menu.filter(item=> item.category === 'soup');
   return (
     <div>
       <Cover img={orderPic} title={'Please Order '}/>
@@ -21,6 +28,7 @@ const Order = () => {
       <Tab>pizza</Tab>
       <Tab>salad</Tab>
       <Tab>desserts</Tab>
+      <Tab>soup</Tab>
     </TabList>
     
 
@@ -33,7 +41,10 @@ const Order = () => {
     
     </TabPanel>
     <TabPanel>
-    <OrderTab items = {desserts}/>
+    <OrderTab items = {dessert}/>
+    </TabPanel>
+    <TabPanel>
+    <OrderTab items = {soup}/>
     </TabPanel>
   </Tabs>
     </div>
