@@ -8,7 +8,7 @@ const OrderCard = ({item}) => {
         src={item.image}
         alt="food" />
     </figure>
-    <p className=" ">${item.price}</p>
+    <p className="bg-slate-700 text-white absolute right-0 mr-4 mt-4 px-4 ">${item.price}</p>
     <div className="card-body">
       <h2 className="card-title">{item.name}</h2>
       <p>{item.recipe}</p>
