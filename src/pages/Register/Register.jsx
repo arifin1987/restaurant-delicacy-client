@@ -1,11 +1,21 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Register = () => {
+  const{createUser} = useContext(AuthContext);
   const {
   register,handleSubmit,formState: { errors },} = useForm();
-  const onSubmit= (data) => console.log(data)
+  const onSubmit= (data) => {
+    createUser(data.email, data.password)
+    .then(result=>{
+    console.log(result);
+    
+    }
+    )
+  }
   return (
     <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
@@ -36,8 +46,11 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" {...register("password", { required: true })} placeholder="password" className="input input-bordered" required />
-          {errors.password && <span>Password is required</span>}
+          <input type="password" {...register("password", { required: true, minLength:6, maxLength:20, pattern:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/ })} placeholder="password" className="input input-bordered" required />
+          {errors.password?.type=== 'required' && <p className='text-red-600'>Password is required</p>}
+          {errors.password?.type=== 'minLength' && <p className='text-red-600'>Password must be 6 characters</p>}
+          {errors.password?.type=== 'maxLength' && <p className='text-red-600'>Password must be less than 20 characters</p>}
+          {errors.password?.type=== 'pattern' && <p className='text-red-600'>Password must have one upeercase, one lowercase, one number and one special character</p>}
         </div>
         <div className="form-control mt-6">
          <input className="btn btn-primary" type="submit" value="Submit" />
