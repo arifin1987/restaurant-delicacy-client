@@ -19,7 +19,7 @@ const Navbar = () => {
     <div className="badge badge-secondary">+0</div>
     </button></Link>
     {
-      user?<button onClick={handleLogOut} className="btn btn-secondary">Log Out</button>:<Link className="mx-4" to='/login'>Login</Link>
+      user?<button onClick={handleLogOut} className="btn btn-secondary text-white">{user?.name}Log Out</button>:<Link className="mx-4" to='/login'>Login</Link>
     }
     
     </>
