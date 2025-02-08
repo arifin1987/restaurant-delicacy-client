@@ -1,12 +1,27 @@
+import { CiShoppingCart } from "react-icons/ci"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../../../providers/AuthProvider";
+import { useContext } from "react";
 
 
 const Navbar = () => {
+  const {user,logOut}= useContext(AuthContext);
+  const handleLogOut = ()=>{
+    logOut();
+  }
     const navItems = <>
     <Link className="mx-4" to= '/'>Home</Link>
     <Link className="mx-4" to='/menu'>Menu</Link>
     <Link className="mx-4" to='/order/pizza'>Order</Link>
-    <Link className="mx-4" to='/login'>Login</Link>
+    <Link className="mx-4" to='/cart'>
+    <button className="btn">
+    <CiShoppingCart />
+    <div className="badge badge-secondary">+0</div>
+    </button></Link>
+    {
+      user?<button onClick={handleLogOut} className="btn btn-secondary">Log Out</button>:<Link className="mx-4" to='/login'>Login</Link>
+    }
+    
     </>
   return (
     <div className="navbar fixed z-10 bg-black bg-opacity-30 text-white max-w-screen-xl mx-auto">

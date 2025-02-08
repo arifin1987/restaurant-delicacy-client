@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
@@ -12,6 +13,11 @@ const Register = () => {
     createUser(data.email, data.password)
     .then(result=>{
     console.log(result);
+    Swal.fire({
+      title: "Successfully Registered",
+      text: "Go to login page",
+      
+    });
     
     }
     )
