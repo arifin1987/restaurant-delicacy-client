@@ -1,15 +1,56 @@
+import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const OrderCard = ({item}) => {
-  const handleAddToCart =(id)=>{
-    fetch(`http://localhost:5000/${item}`,{ 
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(id)}
-    )
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+  const {user} = useAuth();
+  const handleAddToCart =(item)=>{
+    const {_id, name, recipe,image, price}= item;
+    if(user && user.email){
+      const cartItems = {
+        menuId : _id,
+        name, recipe, image, price
 
+      }
+      axios.post("http://localhost:5000/carts", cartItems)
+      .then(result=>{
+        console.log(result.data);
+        if(result.data.insertedId){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Added to the cart",
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+        }
+       
+      })
+      navigate(from, {replace:true});
+
+    }
+    else{
+      Swal.fire({
+        title: "You are not logged in",
+        text: "Please login to add items to the cart!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Please Login"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate ('/login')
+        }
+      });
+
+    }
   }
   return (
     <div className="card card-compact bg-base-100 w-96 shadow-xl">
