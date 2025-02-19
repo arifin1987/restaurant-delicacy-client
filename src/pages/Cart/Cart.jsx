@@ -1,9 +1,11 @@
+import useCart from "../../hooks/useCart"
 
 
 const Cart = () => {
+  const [data] = useCart([]);
   return (
     <div>
-      cart component
+      <h1>{data.length}</h1>
     </div>
   )
 }
