@@ -14,14 +14,14 @@ const Dashboard = () => {
                 <li><NavLink to="/dashboard/reservation"><FaCalendar/> Reservation</NavLink></li>
                 <li><NavLink to="/dashboard/review"><FaAd/> Review</NavLink></li>
                 <li><NavLink to="/dashboard/bookings"><FaList/> My bookings</NavLink></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <div className="divider"></div>
+                <li><NavLink to="/"><FaHome/>  Home</NavLink></li>
+                
             </ul>
 
         </div>
         {/* Dashborad content */}
-        <div className="flex-1">
+        <div className="flex-1 p-8">
             <Outlet/>
         </div>
       
