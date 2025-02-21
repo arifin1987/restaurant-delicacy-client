@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 
 const Register = () => {
@@ -93,6 +94,7 @@ const Register = () => {
         </div>
         <p>Already registered? got to <Link className="text-green-700" to='/login'>Login</Link></p>
       </form>
+      <SocialLogin/>
     </div>
   </div>
 </div>

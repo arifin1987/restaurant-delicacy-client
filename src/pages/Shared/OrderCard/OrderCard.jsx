@@ -35,11 +35,12 @@ const OrderCard = ({item}) => {
             timer: 1500
           });
           refetch()
+          navigate(from, {replace:true});
 
         }
        
       })
-      navigate(from, {replace:true});
+    
 
     }
     else{
