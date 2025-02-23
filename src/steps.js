@@ -58,7 +58,5 @@
  */
 
     /**
-     * Json web token implementation:
-     * npm i jsonwebtoken
-     * const jwt = require('jsonwebtoken');
+     * got to server side code for jwt implementation
      */
