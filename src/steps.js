@@ -60,3 +60,49 @@
     /**
      * got to server side code for jwt implementation
      */
+
+    /**
+     * const AllUsers = () => {
+    // We will use user data only here that's why we don't need to create seperate hook.
+    const axiosSecure = useAxiosSecure();
+    const {data: users=[], refetch} = useQuery({
+      // in cookie do not need to set headers
+        queryKey: ['users'],
+        queryFn: async ()=>{
+            const result = await axiosSecure.get('/users', {
+              
+              headers: {
+                authorization: `Bearer ${localStorage.getItem('access-token')}`
+              }
+            })
+            return result.data;
+
+        }
+       
+
+    })
+        **headers and authorization will need to set everywhere for jwt token varification. In order
+        to make it easier we will set it into useAxiosSecure.jsx hook as a axios.interceptors.requrest.use()
+        also axios.interceptors.response.use(). So we don't need to set everytime the headers and authorization
+        while api calling.
+
+import axios from "axios";
+const axiosSecure = axios.create({
+    baseURL: 'http://localhost:5000'
+})
+
+const useAxiosSecure = () => {
+  axiosSecure.interceptors.request.use(function(config){
+    // console.log('request stopped by interceptors');
+    const token = localStorage.getItem('access-token');
+    config.headers.authorization = `Bearer ${token}`
+    return config;
+  }, function(error){
+    return Promise.reject(error);
+  })
+  return axiosSecure;
+}
+
+export default useAxiosSecure
+
+     */

@@ -8,14 +8,10 @@ const AllUsers = () => {
     // We will use user data only here that's why we don't need to create seperate hook.
     const axiosSecure = useAxiosSecure();
     const {data: users=[], refetch} = useQuery({
+      // in cookie do not need to set headers
         queryKey: ['users'],
         queryFn: async ()=>{
-            const result = await axiosSecure.get('/users', {
-              // in cookie do not need to set this
-              headers: {
-                authorization: `Bearer ${localStorage.getItem('access-token')}`
-              }
-            })
+            const result = await axiosSecure.get('/users')
             return result.data;
 
         }

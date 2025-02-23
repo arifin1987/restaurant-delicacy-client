@@ -5,6 +5,22 @@ const axiosSecure = axios.create({
 })
 
 const useAxiosSecure = () => {
+  axiosSecure.interceptors.request.use(function(config){
+    // console.log('request stopped by interceptors');
+    const token = localStorage.getItem('access-token');
+    config.headers.authorization = `Bearer ${token}`
+    return config;
+  }, function(error){
+    return Promise.reject(error);
+  });
+  
+  axiosSecure.interceptors.response.use(function(response){
+    return response;
+  }, function(error){
+    const status = error.response.status;
+    console.log('status error in the interceptor', status)
+    return Promise.reject(error);
+  })
   return axiosSecure;
 }
 
