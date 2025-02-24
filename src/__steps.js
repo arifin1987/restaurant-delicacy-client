@@ -102,7 +102,7 @@ const useAxiosSecure = () => {
     return Promise.reject(error);
   });
   
-  // intercepts 401 and 403 status
+  // intercepts 401 and 403 status if token is invalid
   axiosSecure.interceptors.response.use(function(response){
     return response;
   },async function(error){
@@ -122,3 +122,25 @@ const useAxiosSecure = () => {
 export default useAxiosSecure
 
      */
+
+/**
+ * we will use useAdmin.jsx hook to find whether user is a admin or not
+ * const useAdmin = () => {
+    const {user} = useAuth();
+    const axiosSecure = useAxiosSecure();
+    const {data: isAdmin} = useQuery({
+        queryKey: [user?.email, 'isAdmin'],
+        queryFn: async ()=>{
+            const result = await axiosSecure.get(`/users/admin/${user.email}`);
+            console.log(result.data);
+            return result.data.admin;
+
+        }
+
+    })
+  return [isAdmin]
+}
+
+export default useAdmin
+
+ */

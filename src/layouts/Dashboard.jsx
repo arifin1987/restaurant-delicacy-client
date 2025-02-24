@@ -1,9 +1,12 @@
 import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa"
 import { NavLink, Outlet } from "react-router-dom"
+import useAdmin from "../hooks/useAdmin";
 
 
 const Dashboard = () => {
-  const isAdmin = true;
+  // const isAdmin = true;
+  // Now we are taking isAdmin information from the useAdmin() hook
+  const isAdmin = useAdmin();
   return (
 
     <div className="flex">
