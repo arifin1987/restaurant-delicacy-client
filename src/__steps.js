@@ -144,3 +144,22 @@ export default useAxiosSecure
 export default useAdmin
 
  */
+/**
+ * we have used verifyAdmin middleware in the server side so that normal user can't access user data
+ * To protect some route we have used AdminRoute.jsx
+ * 
+const AdminRoute = ({children}) => {
+    const [user, loading] = useAuth();
+    const [isAdmin, isAdminLoading]= useAdmin();
+    const location = useLocation();
+    if(loading || isAdminLoading ){
+        return <progress className='progress w-24'></progress>
+    }
+    if(user && isAdmin){
+        return children;
+    }
+  return <Navigate to='/login' state={{from:location}} replace></Navigate>
+}
+
+export default AdminRoute
+ */

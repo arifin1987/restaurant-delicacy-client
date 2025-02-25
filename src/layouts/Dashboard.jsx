@@ -6,7 +6,7 @@ import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
   // const isAdmin = true;
   // Now we are taking isAdmin information from the useAdmin() hook
-  const isAdmin = useAdmin();
+  const [isAdmin] = useAdmin();
   return (
 
     <div className="flex">
@@ -14,8 +14,7 @@ const Dashboard = () => {
         <div className="w-64 min-h-screen bg-green-600">
             <ul className="menu p-4">
               {
-              isAdmin? 
-              <>
+              isAdmin? <>
               <li><NavLink to="/dashboard/adminHome"><FaHome/> Admin Home</NavLink></li>
                 <li><NavLink to="/dashboard/addItems"><FaUtensils/> Add Items</NavLink></li>
                 <li><NavLink to="/dashboard/manageItems"><FaList/> Manage Items</NavLink></li>
@@ -25,7 +24,8 @@ const Dashboard = () => {
               
               </>
               : 
-              <><li><NavLink to="/dashboard/cart"><FaShoppingCart/> My Cart</NavLink></li>
+              <>
+              <li><NavLink to="/dashboard/cart"><FaShoppingCart/> My Cart</NavLink></li>
                 <li><NavLink to="/dashboard/userHome"><FaHome/> User Home</NavLink></li>
                 <li><NavLink to="/dashboard/reservation"><FaCalendar/> Reservation</NavLink></li>
                 <li><NavLink to="/dashboard/review"><FaAd/> Review</NavLink></li>
