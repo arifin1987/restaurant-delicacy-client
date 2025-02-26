@@ -163,3 +163,6 @@ const AdminRoute = ({children}) => {
 
 export default AdminRoute
  */
+/**
+ * AddItems.jsx added to admin dashboard
+ */

@@ -12,7 +12,7 @@ const OrderCard = ({item}) => {
   const [,refetch] = useCart();
   const axiosSecure = useAxiosSecure();
   
-  const from = location.state?.from?.pathname || '/';
+  // const from = location.state?.from?.pathname || '/';
   const {user} = useAuth();
   const handleAddToCart =()=>{
     const {_id, name, recipe,image, price}= item;
@@ -35,7 +35,7 @@ const OrderCard = ({item}) => {
             timer: 1500
           });
           refetch()
-          navigate(from, {replace:true});
+          // navigate(from, {replace:true});
 
         }
        
