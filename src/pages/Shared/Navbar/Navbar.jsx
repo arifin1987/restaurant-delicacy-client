@@ -12,21 +12,21 @@ const Navbar = () => {
     logOut();
   }
     const navItems = <>
-    <Link className="mx-4" to= '/'>Home</Link>
-    <Link className="mx-4" to='/menu'>Menu</Link>
-    <Link className="mx-4" to='/order/pizza'>Order</Link>
-    <Link className="mx-4" to='/dashboard/cart'>
+    <Link className="mx-4 font-semibold " to= '/'>Home</Link>
+    <Link className="mx-4 font-semibold" to='/menu'>Menu</Link>
+    <Link className="mx-4 font-semibold" to='/order/pizza'>Order</Link>
+    <Link className="mx-4 font-semibold" to='/dashboard/cart'>
     <button className="btn">
     <CiShoppingCart />
     <div className="badge badge-secondary">+{cart.length}</div>
     </button></Link>
     {
-      user?<button onClick={handleLogOut} className="btn btn-secondary text-white">Log Out</button>:<Link className="mx-4" to='/login'>Login</Link>
+      user?<button onClick={handleLogOut} className="btn btn-secondary text-white font-semibold">Log Out</button>:<Link className="mx-4 font-semibold" to='/login'>Login</Link>
     }
     
     </>
   return (
-    <div className="navbar fixed z-10 bg-black bg-opacity-30 text-white max-w-screen-xl mx-auto">
+    <div className="navbar fixed z-10 bg-black bg-opacity-30 text-blue-600  max-w-screen-xl mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,9 +56,7 @@ const Navbar = () => {
       {navItems}
     </ul>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
-  </div>
+  
 </div>
   )
 }

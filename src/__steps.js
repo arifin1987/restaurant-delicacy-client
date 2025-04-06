@@ -166,3 +166,29 @@ export default AdminRoute
 /**
  * AddItems.jsx added to admin dashboard
  */
+/**
+ * To upload image in image bb following steps is neeeded:
+ * copy api from image bb about section and save it to .env.local as VITE_IMAGE_HOSTING_KEY
+ * Set this key to AddItem.jsx .
+ * const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+* const AddItems = () => {
+  const axiosPublic = useAxiosPublic();
+  const {
+    register,
+    handleSubmit,
+    
+  } = useForm();
+  const onSubmit =async (data) => {
+    console.log(data);
+    // image upload to imgbb and then get an url
+    const imageFile ={image: data.image[0]}
+    const res = await axiosPublic.post(image_hosting_api,imageFile,{
+    headers: {
+    'content-type': 'multipart/form-data'
+    
+    }
+
+
+    });
+ */

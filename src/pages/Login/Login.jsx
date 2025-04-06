@@ -35,8 +35,8 @@ const Login = () => {
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Please Login</h1>
       <p className="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
+        Provident cupiditate voluptatem et in. Quaerat fugiatut assumenda excepturi exercitationem
+        quasi. 
       </p>
     </div>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -61,7 +61,7 @@ const Login = () => {
         
           
         </div>
-        <p>New here? Please <Link className="text-green-500" to='/register'>Register</Link></p>
+        <p>New here? Please <Link className="text-green-500 text-2xl" to='/register'>Register</Link></p>
       </form>
       <SocialLogin/>
     </div>
